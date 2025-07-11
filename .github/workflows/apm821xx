@@ -1,0 +1,68 @@
+CONFIG_TARGET_apm821xx=y
+CONFIG_TARGET_apm821xx_sata=y
+CONFIG_TARGET_MULTI_PROFILE=y
+CONFIG_DEVEL=y
+CONFIG_TARGET_PER_DEVICE_ROOTFS=y
+# CONFIG_BPF_TOOLCHAIN_BUILD_LLVM is not set
+CONFIG_BPF_TOOLCHAIN_NONE=y
+# CONFIG_DOWNLOAD_CHECK_CERTIFICATE is not set
+# CONFIG_JSON_OVERVIEW_IMAGE_INFO is not set
+# CONFIG_PACKAGE_openwrt-keyring is not set
+# CONFIG_PACKAGE_usign is not set
+# CONFIG_SIGNATURE_CHECK is not set
+# CONFIG_SIGNED_PACKAGES is not set
+CONFIG_TARGET_ALL_PROFILES=y
+# CONFIG_TARGET_ROOTFS_EXT4FS is not set
+# CONFIG_TARGET_ROOTFS_INITRAMFS is not set
+# CONFIG_TARGET_ROOTFS_SQUASHFS is not set
+CONFIG_MODULE_DEFAULT_badblocks=m
+CONFIG_MODULE_DEFAULT_base-files=m
+CONFIG_MODULE_DEFAULT_block-mount=m
+CONFIG_MODULE_DEFAULT_ca-bundle=m
+CONFIG_MODULE_DEFAULT_dropbear=m
+CONFIG_MODULE_DEFAULT_e2fsprogs=m
+CONFIG_MODULE_DEFAULT_f2fsck=m
+CONFIG_MODULE_DEFAULT_fdisk=m
+CONFIG_MODULE_DEFAULT_fstools=m
+CONFIG_MODULE_DEFAULT_kmod-dm=m
+CONFIG_MODULE_DEFAULT_kmod-gpio-button-hotplug=m
+CONFIG_MODULE_DEFAULT_kmod-hw-crypto-4xx=m
+CONFIG_MODULE_DEFAULT_kmod-hwmon-drivetemp=m
+CONFIG_MODULE_DEFAULT_kmod-i2c-core=m
+CONFIG_MODULE_DEFAULT_kmod-leds-gpio=m
+CONFIG_MODULE_DEFAULT_kmod-md-mod=m
+CONFIG_MODULE_DEFAULT_libc=m
+CONFIG_MODULE_DEFAULT_libgcc=m
+CONFIG_MODULE_DEFAULT_libustream-mbedtls=m
+CONFIG_MODULE_DEFAULT_logd=m
+CONFIG_MODULE_DEFAULT_lsblk=m
+CONFIG_MODULE_DEFAULT_mdadm=m
+CONFIG_MODULE_DEFAULT_mkf2fs=m
+CONFIG_MODULE_DEFAULT_mtd=m
+CONFIG_MODULE_DEFAULT_netifd=m
+CONFIG_MODULE_DEFAULT_partx-utils=m
+CONFIG_MODULE_DEFAULT_procd-ujail=m
+CONFIG_MODULE_DEFAULT_uboot-envtools=m
+CONFIG_MODULE_DEFAULT_uci=m
+CONFIG_MODULE_DEFAULT_uclient-fetch=m
+CONFIG_MODULE_DEFAULT_urandom-seed=m
+CONFIG_MODULE_DEFAULT_urngd=m
+# CONFIG_PACKAGE_hostapd-common is not set
+# CONFIG_PACKAGE_iwinfo is not set
+# CONFIG_PACKAGE_kmod-ata-dwc is not set
+# CONFIG_PACKAGE_kmod-fs-vfat is not set
+# CONFIG_PACKAGE_kmod-nls-base is not set
+# CONFIG_PACKAGE_kmod-nls-cp437 is not set
+# CONFIG_PACKAGE_kmod-nls-iso8859-1 is not set
+# CONFIG_PACKAGE_kmod-nls-utf8 is not set
+# CONFIG_PACKAGE_kmod-usb-core is not set
+# CONFIG_PACKAGE_kmod-usb-dwc2 is not set
+# CONFIG_PACKAGE_kmod-usb-ledtrig-usbport is not set
+# CONFIG_PACKAGE_kmod-usb-storage is not set
+# CONFIG_PACKAGE_libiwinfo is not set
+# CONFIG_PACKAGE_ucode-mod-nl80211 is not set
+# CONFIG_PACKAGE_ucode-mod-rtnl is not set
+# CONFIG_PACKAGE_ucode-mod-ubus is not set
+# CONFIG_PACKAGE_ucode-mod-uloop is not set
+# CONFIG_PACKAGE_wpad-basic-mbedtls is not set
+# CONFIG_TARGET_DEVICE_apm821xx_sata_DEVICE_wd_mybooklive is not set

@@ -1,0 +1,283 @@
+name: Build kernel 6.12-v2
+on:
+   workflow_dispatch:
+jobs:
+    build:
+        name: kernel 6.12-v2
+        runs-on: ubuntu-24.04-arm
+        steps:
+            - name: Setup Ubuntu
+              run: |
+                sudo apt update
+                sudo apt install -y subversion build-essential gettext 2to3 python3-pyelftools python3-distutils-extra
+            - name: Setup Go
+              uses: actions/setup-go@v5
+              with:
+                go-version: '1.23.5'
+            - name: checkout
+              uses: actions/checkout@v4
+            - name: Refresh Kernel
+              run: |
+                git clone https://github.com/openwrt/openwrt.git
+                cp -rf .github/workflows/* openwrt/
+                git config --global user.email md@any.ccc
+                git config --global user.name 'M Z'
+                cd openwrt
+                wget https://github.com/mj22226/openwrt/commit/b568c4f555978f9d8625d6de2052bd2b318fd697.patch
+                git am b568c4f555978f9d8625d6de2052bd2b318fd697.patch
+                git apply k-6.12.patch
+                git am pm.patch
+                rm -f .config
+                rm -rf tmp
+                mv apm821xx .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make tools/quilt/compile -j$(nproc)
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -f .config
+                rm -rf tmp
+                mv armsr .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -f .config
+                rm -rf tmp
+                mv ath79 .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -f .config
+                rm -rf tmp
+                mv bcm27xx .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -rf build_dir/target*
+                rm -f .config
+                rm -rf tmp
+                mv bmips .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -f .config
+                rm -rf tmp
+                mv d1 .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -f .config
+                rm -rf tmp
+                mv gemini .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -rf build_dir/target*
+                rm -f .config
+                rm -rf tmp
+                mv imx .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -rf build_dir/target*
+                rm -f .config
+                rm -rf tmp
+                mv ipq40xx .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -f .config
+                rm -rf tmp
+                mv ipq806x .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -rf build_dir/target*
+                rm -f .config
+                rm -rf tmp
+                mv ixp4xx .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -f .config
+                rm -rf tmp
+                mv kirkwood .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -f .config
+                rm -rf tmp
+                mv lantiq .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -rf build_dir/target*
+                rm -f .config
+                rm -rf tmp
+                mv layerscape .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -rf build_dir/target*
+                rm -f .config
+                rm -rf tmp
+                mv mediatek .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -f .config
+                rm -rf tmp
+                mv mpc85xx .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -rf build_dir/target*
+                rm -f .config
+                rm -rf tmp
+                mv mvebu .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -f .config
+                rm -rf tmp
+                mv octeon .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -rf build_dir/target*
+                rm -f .config
+                rm -rf tmp
+                mv omap .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -rf build_dir/target*
+                rm -f .config
+                rm -rf tmp
+                mv pistachio .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -f .config
+                rm -rf tmp
+                mv qualcommax .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -rf build_dir/target*
+                rm -f .config
+                rm -rf tmp
+                mv ramips .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -f .config
+                rm -rf tmp
+                mv realtek .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -f .config
+                rm -rf tmp
+                mv rockchip .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -rf build_dir/target*
+                rm -f .config
+                rm -rf tmp
+                mv sifiveu .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -f .config
+                rm -rf tmp
+                mv siflower .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -f .config
+                rm -rf tmp
+                mv starfive .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -rf build_dir/target*
+                rm -f .config
+                rm -rf tmp
+                mv stm32 .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -f .config
+                rm -rf tmp
+                mv sunxi .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -rf build_dir/target*
+                rm -f .config
+                rm -rf tmp
+                mv tegra .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                rm -rf build_dir/target*
+                rm -f .config
+                rm -rf tmp
+                mv x86 .config
+                echo "CONFIG_BUILD_LOG=y" >> .config
+                echo "CONFIG_EXPERIMENTAL=y" >> .config
+                make defconfig
+                make target/linux/{clean,refresh} -j$(nproc) V=s
+                git diff > k-6.12.patch
+                tar -czvf logs.tar.gz logs
+                echo "D=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
+            - name: Delete tag
+              uses: ClementTsang/delete-tag-and-release@v0.4.0
+              with:
+                delete_release: true
+                tag_name: kernel-6.12-v2
+              env:
+                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Create release
+              uses: ncipollo/release-action@v1.14.0
+              with:
+                allowUpdates: true
+                name: Kernel 6.12-v2 ${{ env.D }}
+                tag: kernel-6.12-v2
+                replacesArtifacts: true
+                makeLatest: true
+                token: "${{ secrets.GITHUB_TOKEN }}"
+                artifacts: |
+                          openwrt/k-6.12.patch
+                          openwrt/logs.tar.gz

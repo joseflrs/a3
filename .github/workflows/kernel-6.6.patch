@@ -1,0 +1,37 @@
+From 373320611bb6f3706f46e1618304497092e43574 Mon Sep 17 00:00:00 2001
+From: il <il@il.com>
+Date: Tue, 8 Jul 2025 18:57:41 -0400
+Subject: [PATCH] kernel-6.6
+
+---
+ ...80-usb-xhci-add-support-for-performing-fake-doorbell.patch | 2 +-
+ target/linux/generic/kernel-6.6                               | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/target/linux/bcm53xx/patches-6.6/180-usb-xhci-add-support-for-performing-fake-doorbell.patch b/target/linux/bcm53xx/patches-6.6/180-usb-xhci-add-support-for-performing-fake-doorbell.patch
+index 5886cef55a..1e285e8f9b 100644
+--- a/target/linux/bcm53xx/patches-6.6/180-usb-xhci-add-support-for-performing-fake-doorbell.patch
++++ b/target/linux/bcm53xx/patches-6.6/180-usb-xhci-add-support-for-performing-fake-doorbell.patch
+@@ -104,9 +104,9 @@ it on BCM4708 family.
+ --- a/drivers/usb/host/xhci.h
+ +++ b/drivers/usb/host/xhci.h
+ @@ -1659,6 +1659,7 @@ struct xhci_hcd {
+- #define XHCI_WRITE_64_HI_LO	BIT_ULL(47)
+  #define XHCI_CDNS_SCTX_QUIRK	BIT_ULL(48)
+  #define XHCI_ETRON_HOST	BIT_ULL(49)
++ #define XHCI_LIMIT_ENDPOINT_INTERVAL_9 BIT_ULL(50)
+ +#define XHCI_FAKE_DOORBELL	BIT_ULL(50)
+  
+  	unsigned int		num_active_eps;
+diff --git a/target/linux/generic/kernel-6.6 b/target/linux/generic/kernel-6.6
+index 88d972d66a..4c02e07559 100644
+--- a/target/linux/generic/kernel-6.6
++++ b/target/linux/generic/kernel-6.6
+@@ -1,2 +1,2 @@
+-LINUX_VERSION-6.6 = .96
+-LINUX_KERNEL_HASH-6.6.96 = 9ee45843d43adb2e2ac5f6a8cb10a334e39e3e3384af8a0ce383a37f78221bdd
++LINUX_VERSION-6.6 = .97
++LINUX_KERNEL_HASH-6.6.97 = 3b67c170638142da56b7a9c3295f2483b88e8c4d3bc26b2bda63b6cf0cb9ee3b
+-- 
+2.48.1
+
