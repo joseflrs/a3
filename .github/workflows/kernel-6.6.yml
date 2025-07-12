@@ -23,12 +23,8 @@ jobs:
                 git config --global user.email md@any.ccc
                 git config --global user.name 'M Z'
                 cd openwrt
-                wget https://github.com/mj22226/openwrt/commit/809d86de3670bc9f64dba59ef8369a969baa4308.patch
-                git am 809d86de3670bc9f64dba59ef8369a969baa4308.patch
-                rm -f target/linux/generic/backport-6.6/001-powerpc-kernel-Fix-pcc_save_regs-inclusion.patch
                 ./scripts/feeds update -a
                 ./scripts/feeds install -a
-                git apply kernel-6.6.patch
                 git am pm.patch
                 rm -f .config
                 rm -rf tmp
