@@ -20,6 +20,7 @@ jobs:
                 git config --global user.name 'M Z'
                 cd openwrt
                 git am pm.patch
+                git apply k-6.12.patch
                 rm -f .config
                 rm -rf tmp
                 mv apm821xx .config
