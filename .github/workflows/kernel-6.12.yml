@@ -23,8 +23,6 @@ jobs:
                 git config --global user.email md@any.ccc
                 git config --global user.name 'M Z'
                 cd openwrt
-                wget https://github.com/mj22226/openwrt/commit/b568c4f555978f9d8625d6de2052bd2b318fd697.patch
-                git am b568c4f555978f9d8625d6de2052bd2b318fd697.patch
                 ./scripts/feeds update -a
                 ./scripts/feeds install -a
                 git apply k-6.12.patch
