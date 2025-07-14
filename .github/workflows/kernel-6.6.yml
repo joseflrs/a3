@@ -23,15 +23,13 @@ jobs:
                 git config --global user.email md@any.ccc
                 git config --global user.name 'M Z'
                 cd openwrt
-                ./scripts/feeds update -a
-                ./scripts/feeds install -a
                 git am pm.patch
+                git apply kernel-6.6.patch
                 rm -f .config
                 rm -rf tmp
                 mv apm821xx .config
                 echo "CONFIG_BUILD_LOG=y" >> .config
                 make defconfig
-                make download -j32 || true
                 make tools/quilt/compile -j$(nproc)
                 make target/linux/{clean,refresh} -j$(nproc) V=s
                 rm -f .config
