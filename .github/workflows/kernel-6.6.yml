@@ -24,6 +24,8 @@ jobs:
                 git config --global user.name 'M Z'
                 cd openwrt
                 git am pm.patch
+                wget https://patch-diff.githubusercontent.com/raw/openwrt/openwrt/pull/19411.patch
+                git am 19411.patch
                 git apply kernel-6.6.patch
                 rm -f .config
                 rm -rf tmp
