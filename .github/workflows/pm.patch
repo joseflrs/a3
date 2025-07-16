@@ -1,25 +1,24 @@
-From 0c22f5e16eab1e0145b6c0973074bba7c903a4da Mon Sep 17 00:00:00 2001
-From: Marty Jones <mj8263788@gmail.com>
+From 8fae0297fb29da048e076948b3987572fde067fc Mon Sep 17 00:00:00 2001
+From: i l <il.com>
 Date: Thu, 26 Jun 2025 11:30:50 -0400
-Subject: [PATCH] pm
+Subject: [PATCH 3/5] pm
 
 ---
  scripts/projectsmirrors.json | 2 ++
  1 file changed, 2 insertions(+)
 
 diff --git a/scripts/projectsmirrors.json b/scripts/projectsmirrors.json
-index 9bc2d7ac10..46e7fb48ba 100644
+index 9bc2d7ac10..95b74fe205 100644
 --- a/scripts/projectsmirrors.json
 +++ b/scripts/projectsmirrors.json
-@@ -63,6 +63,8 @@
+@@ -63,6 +63,10 @@
  		"https://mirrors.ustc.edu.cn/gnome/sources"
  	],
  	"@OPENWRT": [
 +		"https://github.com/joseflrs/a4/releases/download/v6.6/",
 +		"https://github.com/joseflrs/a4/releases/download/v6.12/",
++		"https://github.com/mj22226/linux/releases/download/v6.6/",
++		"https://github.com/mj22226/linux/releases/download/v6.12/",
  		"https://sources.cdn.openwrt.org",
  		"https://sources.openwrt.org",
  		"https://mirror2.openwrt.org/sources"
--- 
-2.46.0
-
