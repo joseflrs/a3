@@ -418,7 +418,7 @@ jobs:
 
                 git clean -d -f .
                 git add .
-                git commit -s -m "kernel 6.6"
+                git commit -s -m "kernel: bump 6.6 to 6.6.99" -m "Changelog: https://cdn.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.6.99" -m "All patches automatically refreshed.";
                 git format-patch -1
 
                 echo "D=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
