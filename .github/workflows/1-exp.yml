@@ -22,7 +22,7 @@ jobs:
                 git am pm.patch
                 sed -i 's/LINUX_VERSION-6.6 = .98/LINUX_VERSION-6.6 = .99/g' target/linux/generic/kernel-6.6
                 sed -i 's/LINUX_KERNEL_HASH-6.6.98/LINUX_KERNEL_HASH-6.6.99/g' target/linux/generic/kernel-6.6
-                sed -i 's/296a34c500abc22c434b967d471d75568891f06a98f11fc31c5e79b037f45de5/c02a3b9b6c115f61d804da6185d92821f8903fab395cb39f57f21e8071548360/g' target/linux/generic/kernel-6.6
+                sed -i 's/296a34c500abc22c434b967d471d75568891f06a98f11fc31c5e79b037f45de5/77a949b3a8a474263fcf1b1f462d8bee1ad1d7e2162846de7fdc025297bc1862/g' target/linux/generic/kernel-6.6
                 rm -f .config
                 rm -rf tmp
                 echo "CONFIG_TARGET_airoha=y" > .config
