@@ -33,7 +33,6 @@ jobs:
                 git add .
                 git commit -s -m "kernel 6.12"
                 git format-patch -1
-                tar -czvf logs.tar.gz logs
                 echo "D=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
              - name: Delete tag
                uses: ClementTsang/delete-tag-and-release@v0.4.0
