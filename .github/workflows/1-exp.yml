@@ -417,6 +417,7 @@ jobs:
                 make target/linux/{clean,refresh} -j$(nproc) V=s
 
                 git clean -d -f .
+                rm -f *.patch
                 git add .
                 git commit -s -m "kernel: bump 6.6 to 6.6.99" -m "Changelog: https://cdn.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.6.99" -m "All patches automatically refreshed.";
                 git format-patch -1
@@ -439,5 +440,4 @@ jobs:
                 makeLatest: true
                 token: "${{ secrets.GITHUB_TOKEN }}"
                 artifacts: |
-                          openwrt/0001-kernel-6.6.patch
-                          openwrt/logs.tar.gz
+                          openwrt/*.patch
