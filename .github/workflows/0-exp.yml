@@ -21,7 +21,7 @@ jobs:
                 cd openwrt
                 git am pm.patch
                 sed -i 's/38/39/g' target/linux/generic/kernel-6.12
-                sed -i 's/f035fa8d83d59f793c76b23567b130cc42118f10696815fed03c16bb15670fcc/dd14a5257b13e521b40ba7225099dea272df5d1cb419945e17c38f870fdc55f4/g' target/linux/generic/kernel-6.12
+                sed -i 's/f035fa8d83d59f793c76b23567b130cc42118f10696815fed03c16bb15670fcc/b08679729f1ec74b9fa829f5990936ca2511039d87acc7e8b3f39912de89ab36/g' target/linux/generic/kernel-6.12
                 rm -f .config
                 rm -rf tmp
                 echo "CONFIG_TARGET_airoha=y" > .config
