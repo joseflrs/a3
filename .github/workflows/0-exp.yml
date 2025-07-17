@@ -416,7 +416,7 @@ jobs:
                 make target/linux/{clean,refresh} -j$(nproc) V=s
 
                 git clean -d -f .
-                rm *.patch
+                rm -f *.patch
                 git add .
                 git commit -s -m "kernel: bump 6.12 to 6.12.39" -m "Changelog: https://cdn.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.39" -m "All patches automatically refreshed.";
                 git format-patch -1
