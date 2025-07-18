@@ -20,8 +20,7 @@ jobs:
                 cp -rf .github/workflows/pm.patch openwrt/
                 cd openwrt
                 git am pm.patch
-                sed -i 's/38/39/g' target/linux/generic/kernel-6.12
-                sed -i 's/f035fa8d83d59f793c76b23567b130cc42118f10696815fed03c16bb15670fcc/6e562502a8fd11639f558e43b74f0df0d85fa85e60f5332acb275a75a35f5345/g' target/linux/generic/kernel-6.12
+                git apply k-6.12.patch
                 rm -f .config
                 rm -rf tmp
                 echo "CONFIG_TARGET_airoha=y" > .config
@@ -156,8 +155,7 @@ jobs:
                 cp -rf .github/workflows/pm.patch openwrt/
                 cd openwrt
                 git am pm.patch
-                sed -i 's/38/39/g' target/linux/generic/kernel-6.12
-                sed -i 's/f035fa8d83d59f793c76b23567b130cc42118f10696815fed03c16bb15670fcc/6e562502a8fd11639f558e43b74f0df0d85fa85e60f5332acb275a75a35f5345/g' target/linux/generic/kernel-6.12
+                git apply k-6.12.patch
                 rm -f .config
                 rm -rf tmp
                 echo "CONFIG_TARGET_d1=y" > .config
@@ -282,8 +280,7 @@ jobs:
                 cp -rf .github/workflows/pm.patch openwrt/
                 cd openwrt
                 git am pm.patch
-                sed -i 's/38/39/g' target/linux/generic/kernel-6.12
-                sed -i 's/f035fa8d83d59f793c76b23567b130cc42118f10696815fed03c16bb15670fcc/6e562502a8fd11639f558e43b74f0df0d85fa85e60f5332acb275a75a35f5345/g' target/linux/generic/kernel-6.12
+                git apply k-6.12.patch
                 rm -f .config
                 rm -rf tmp
                 echo "CONFIG_TARGET_loongarch64=y" > .config
@@ -429,8 +426,7 @@ jobs:
                 cp -rf .github/workflows/pm.patch openwrt/
                 cd openwrt
                 git am pm.patch
-                sed -i 's/38/39/g' target/linux/generic/kernel-6.12
-                sed -i 's/f035fa8d83d59f793c76b23567b130cc42118f10696815fed03c16bb15670fcc/6e562502a8fd11639f558e43b74f0df0d85fa85e60f5332acb275a75a35f5345/g' target/linux/generic/kernel-6.12
+                git apply k-6.12.patch
                 rm -f .config
                 rm -rf tmp
                 echo "CONFIG_TARGET_ramips=y" > .config
