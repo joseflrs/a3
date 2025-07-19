@@ -117,8 +117,10 @@ jobs:
                 make target/linux/{clean,refresh} -j$(nproc) V=s
 
                 git clean -d -f .
-                git clean *.patch
-                git diff > part1.patch
+                rm -f *.patch
+                git add .
+                git commit -m "part1"
+                git format-patch -1
                 echo "D=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
              - name: Delete tag
                uses: ClementTsang/delete-tag-and-release@v0.4.0
@@ -244,8 +246,11 @@ jobs:
                 make target/linux/{clean,refresh} -j$(nproc) V=s
 
                 git clean -d -f .
-                git clean *.patch
-                git diff > part2.patch
+                rm -f *.patch
+                git add .
+                git restore --staged target/linux/generic/*
+                git commit -m "part2"
+                git format-patch -1
                 echo "D=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
              - name: Delete tag
                uses: ClementTsang/delete-tag-and-release@v0.4.0
@@ -392,8 +397,11 @@ jobs:
                 make target/linux/{clean,refresh} -j$(nproc) V=s
 
                 git clean -d -f .
-                git clean *.patch
-                git diff > part3.patch
+                rm -f *.patch
+                git add .
+                git restore --staged target/linux/generic/*
+                git commit -m "part3"
+                git format-patch -1
                 echo "D=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
              - name: Delete tag
                uses: ClementTsang/delete-tag-and-release@v0.4.0
@@ -548,9 +556,11 @@ jobs:
                 make target/linux/{clean,refresh} -j$(nproc) V=s
 
                 git clean -d -f .
-                git clean *.patch
-                git diff > part4.patch
-
+                rm -f *.patch
+                git add .
+                git restore --staged target/linux/generic/*
+                git commit -m "part4"
+                git format-patch -1
                 echo "D=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
              - name: Delete tag
                uses: ClementTsang/delete-tag-and-release@v0.4.0
