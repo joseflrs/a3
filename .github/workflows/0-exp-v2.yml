@@ -583,3 +583,54 @@ jobs:
                 token: "${{ secrets.GITHUB_TOKEN }}"
                 artifacts: |
                           openwrt/*.patch
+
+    build5:
+        needs:
+          - build1
+          - build2
+          - build3
+          - build4
+        name: kernel 6.12
+        runs-on: ubuntu-24.04-arm
+        steps:
+             - name: checkout
+               uses: actions/checkout@v4
+             - name: refresh kernel
+               run: |
+                git clone https://github.com/openwrt/openwrt.git
+                git config --global user.email io@roton.me
+                git config --global user.name 'J R'
+                cp -rf .github/workflows/pm.patch openwrt/
+                cp -rf .github/workflows/k-6.12.patch openwrt/
+                cd openwrt
+                wget https://github.com/joseflrs/a3/releases/download/part1/0001-part1.patch || true
+                wget https://github.com/joseflrs/a3/releases/download/part2/0001-part3.patch || true
+                wget https://github.com/joseflrs/a3/releases/download/part3/0001-part3.patch || true
+                wget https://github.com/joseflrs/a3/releases/download/part4/0001-part4.patch || true
+                git apply 0001-part1.patch || true
+                git apply 0001-part2.patch || true
+                git apply 0001-part3.patch || true
+                git apply 0001-part4.patch || true
+                git add .
+                git commit -s -m "kernel: bump 6.12 to 6.12.39"
+                rm *.patch
+                git format-patch -1
+                echo "D=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
+             - name: Delete tag
+               uses: ClementTsang/delete-tag-and-release@v0.4.0
+               with:
+                delete_release: true
+                tag_name: kernel-6.12-p
+               env:
+                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+             - name: Create release
+               uses: ncipollo/release-action@v1.14.0
+               with:
+                allowUpdates: true
+                name: Kernel 6.12 parts ${{ env.D }}
+                tag: kernel-6.12-p
+                replacesArtifacts: true
+                makeLatest: true
+                token: "${{ secrets.GITHUB_TOKEN }}"
+                artifacts: |
+                          openwrt/*.patch
