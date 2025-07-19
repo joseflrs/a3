@@ -249,8 +249,8 @@ jobs:
                 rm -f *.patch
                 git add .
                 git restore --staged target/linux/generic/*
-                git commit -m "part2"
-                git format-patch -1
+                git commit -m "part2" || true
+                git format-patch -1 || true
                 echo "D=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
              - name: Delete tag
                uses: ClementTsang/delete-tag-and-release@v0.4.0
@@ -400,8 +400,8 @@ jobs:
                 rm -f *.patch
                 git add .
                 git restore --staged target/linux/generic/*
-                git commit -m "part3"
-                git format-patch -1
+                git commit -m "part3" || true
+                git format-patch -1 || true
                 echo "D=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
              - name: Delete tag
                uses: ClementTsang/delete-tag-and-release@v0.4.0
@@ -559,8 +559,8 @@ jobs:
                 rm -f *.patch
                 git add .
                 git restore --staged target/linux/generic/*
-                git commit -m "part4"
-                git format-patch -1
+                git commit -m "part4" || true
+                git format-patch -1 || true
                 echo "D=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
              - name: Delete tag
                uses: ClementTsang/delete-tag-and-release@v0.4.0
